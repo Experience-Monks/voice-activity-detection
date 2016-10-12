@@ -13,16 +13,27 @@ function requestMic() {
   } catch (e) {
     handleUserMediaError();
   }
-};
+}
 
 function handleUserMediaError() {
   console.warn('Mic input is not supported by the browser.');
-};
+}
 
 function handleMicConnectError() {
   console.warn('Could not connect microphone. Possible rejected by the user or is blocked by the browser.');
-};
+}
 
 function startUserMedia(stream) {
-  vad(audioContext, stream);
+  var options = {
+    onVoiceStart: function() {
+      console.log('voice start');
+    },
+    onVoiceStop: function() {
+      console.log('voice stop');
+    },
+    onUpdate: function(val) {
+      //console.log('curr val:', val);
+    }
+  };
+  vad(audioContext, stream, options);
 }
