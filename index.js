@@ -17,13 +17,13 @@ module.exports = function(audioContext, stream, opts) {
     maxNoiseCutoffLevel: 0.7,   // from 0 to 1
     avgNoiceMultiplier: 1.2,
     onVoiceStart: function onVoiceStart() {
-      console.log('voice start');
+      //console.log('voice start');
     },
     onVoiceStop: function onVoiceStop() {
-      console.log('voice stop');
+      //console.log('voice stop');
     },
     onUpdate: function onUpdate(val) {
-      console.log('curr val:', val);
+      //console.log('curr val:', val);
     }
   };
 
