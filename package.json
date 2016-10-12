@@ -1,0 +1,33 @@
+{
+  "name": "voice-activity-detection",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Vadim Namniak",
+    "email": "vadim@jam3.com",
+    "url": "https://github.com/Jam3"
+  },
+  "dependencies": {
+    "analyser-frequency-average": "^1.0.0"
+  },
+  "devDependencies": {
+    "budo": "^9.2.1"
+  },
+  "scripts": {
+    "start": "budo test/test.js --live"
+  },
+  "keywords": [
+    "voice",
+    "voice activity"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git:github.com/Jam3/voice-activity-detection.git"
+  },
+  "homepage": "https://github.com/Jam3/voice-activity-detection",
+  "bugs": {
+    "url": "https://github.com/Jam3/voice-activity-detection/issues"
+  }
+}
