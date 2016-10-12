@@ -15,14 +15,14 @@ module.exports = function(audioContext, stream, opts) {
     noiseCaptureDuration: 0,    // in ms
     minNoiseCutoffLevel: 0.4,   // from 0 to 1
     maxNoiseCutoffLevel: 0.7,   // from 0 to 1
-    avgNoiceMultiplier: 1.2,
-    onVoiceStart: function onVoiceStart() {
+    avgNoiseMultiplier: 1.2,
+    onVoiceStart: function() {
       //console.log('voice start');
     },
-    onVoiceStop: function onVoiceStop() {
+    onVoiceStop: function() {
       //console.log('voice stop');
     },
-    onUpdate: function onUpdate(val) {
+    onUpdate: function(val) {
       //console.log('curr val:', val);
     }
   };
@@ -66,7 +66,7 @@ module.exports = function(audioContext, stream, opts) {
         return p + c;
       }, 0) / envFreqRange.length) || 0;
 
-    baseFreq = averageEnvFreq * options.avgNoiceMultiplier;
+    baseFreq = averageEnvFreq * options.avgNoiseMultiplier;
     if (baseFreq < options.minNoiseCutoffLevel) baseFreq = options.minNoiseCutoffLevel;
     if (baseFreq > options.maxNoiseCutoffLevel) baseFreq = options.maxNoiseCutoffLevel;
 
