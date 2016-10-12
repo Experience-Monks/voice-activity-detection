@@ -1,7 +1,7 @@
 {
   "name": "voice-activity-detection",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.2",
+  "description": "Mic input activity detection",
   "main": "index.js",
   "license": "MIT",
   "author": {
@@ -20,7 +20,8 @@
   },
   "keywords": [
     "voice",
-    "voice activity"
+    "voice activity",
+    "mic"
   ],
   "repository": {
     "type": "git",
