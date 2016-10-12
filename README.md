@@ -1,7 +1,5 @@
 # voice-activity-detection
 
-# voice-activity-detection
-
 ## Syntax
 ```vad(audioContext, stream [, options]);```
 
