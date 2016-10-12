@@ -24,11 +24,5 @@ function handleMicConnectError() {
 };
 
 function startUserMedia(stream) {
-  var source = audioContext.createMediaStreamSource(stream);
-  var options = {
-    context: audioContext,
-    source: source
-  };
-
-  vad(options);
+  vad(audioContext, stream);
 }

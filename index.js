@@ -2,11 +2,11 @@
 
 var analyserFrequency = require('analyser-frequency-average');
 
-module.exports = function(opts) {
+module.exports = function(audioContext, stream, opts) {
+
+  opts = opts || {};
 
   var defaults = {
-    source: null,
-    context: null,
     fftSize: 1024,
     bufferLen: 1024,
     smoothingTimeConstant: 0.2,
@@ -17,24 +17,20 @@ module.exports = function(opts) {
     maxNoiseCutoffLevel: 0.7,   // from 0 to 1
     avgNoiceMultiplier: 1.2,
     onVoiceStart: function onVoiceStart() {
-      //console.log('voice start');
+      console.log('voice start');
     },
     onVoiceStop: function onVoiceStop() {
-      //console.log('voice stop');
+      console.log('voice stop');
     },
     onUpdate: function onUpdate(val) {
-      //console.log('curr val:', val);
+      console.log('curr val:', val);
     }
   };
 
   var options = {};
-
   for (var key in defaults) {
     options[key] = opts.hasOwnProperty(key) ? opts[key] : defaults[key];
   }
-
-  var context = options.context;
-  var source = options.source;
 
   var baseFreq = 0;
   var activityCounter = 0;
@@ -48,11 +44,12 @@ module.exports = function(opts) {
   var vadState = false;
   var captureTimeout = null;
 
-  var analyser = context.createAnalyser();
+  var source = audioContext.createMediaStreamSource(stream);
+  var analyser = audioContext.createAnalyser();
   analyser.smoothingTimeConstant = options.smoothingTimeConstant;
   analyser.fftSize = options.fftSize;
 
-  var scriptProcessorNode = context.createScriptProcessor(options.bufferLen, 1, 1);
+  var scriptProcessorNode = audioContext.createScriptProcessor(options.bufferLen, 1, 1);
   connect();
   scriptProcessorNode.onaudioprocess = monitor;
 
@@ -80,7 +77,7 @@ module.exports = function(opts) {
   function connect() {
     source.connect(analyser);
     analyser.connect(scriptProcessorNode);
-    scriptProcessorNode.connect(context.destination);
+    scriptProcessorNode.connect(audioContext.destination);
   }
 
   function disconnect() {
