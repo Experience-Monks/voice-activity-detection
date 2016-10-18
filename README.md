@@ -11,8 +11,8 @@
   smoothingTimeConstant: 0.2,
   minCaptureFreq: 85,         // in Hz
   maxCaptureFreq: 255,        // in Hz
-  noiseCaptureDuration: 0,    // in ms
-  minNoiseLevel: 0.4,         // from 0 to 1
+  noiseCaptureDuration: 1000, // in ms
+  minNoiseLevel: 0.3,         // from 0 to 1
   maxNoiseLevel: 0.7,         // from 0 to 1
   avgNoiseMultiplier: 1.2,
   onVoiceStart: function() {},
@@ -30,4 +30,4 @@
 See [example code](https://github.com/Jam3/voice-activity-detection/blob/master/test/test.js)
 
 ## Test
-```npm start```
+```npm run test```
