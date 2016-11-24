@@ -62,7 +62,7 @@ module.exports = function(audioContext, stream, opts) {
     envFreqRange = envFreqRange.filter(function(val) {
       return val;
     }).sort();
-    var averageEnvFreq = envFreqRange.length ? envFreqRange.reduce((p, c) => Math.min(p, c), 1) : (options.minNoiseLevel || 0.1);
+    var averageEnvFreq = envFreqRange.length ? envFreqRange.reduce(function (p, c) { return Math.min(p, c) }, 1) : (options.minNoiseLevel || 0.1);
 
     baseLevel = averageEnvFreq * options.avgNoiseMultiplier;
     if (options.minNoiseLevel && baseLevel < options.minNoiseLevel) baseLevel = options.minNoiseLevel;
