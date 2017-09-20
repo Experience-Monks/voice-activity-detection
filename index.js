@@ -81,11 +81,14 @@ module.exports = function(audioContext, stream, opts) {
 
   function disconnect() {
     scriptProcessorNode.disconnect();
+    analyser.disconnect();
+    source.disconnect();
   }
 
   function destroy() {
     captureTimeout && clearTimeout(captureTimeout);
     disconnect();
+    scriptProcessorNode.onaudioprocess = null;
   }
 
   function monitor() {
